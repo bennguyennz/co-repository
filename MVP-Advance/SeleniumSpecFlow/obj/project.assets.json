@@ -10964,19 +10964,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\A2-Student\\.nuget\\packages\\": {}
+    "C:\\Users\\windows\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\Co-project\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\SeleniumSpecFlow.csproj",
+      "projectUniqueName": "D:\\workspace\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\SeleniumSpecFlow.csproj",
       "projectName": "SeleniumSpecFlow",
-      "projectPath": "E:\\Co-project\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\SeleniumSpecFlow.csproj",
-      "packagesPath": "C:\\Users\\A2-Student\\.nuget\\packages\\",
-      "outputPath": "E:\\Co-project\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\obj\\",
+      "projectPath": "D:\\workspace\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\SeleniumSpecFlow.csproj",
+      "packagesPath": "C:\\Users\\windows\\.nuget\\packages\\",
+      "outputPath": "D:\\workspace\\co-repository\\MVP-Advance\\SeleniumSpecFlow\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\A2-Student\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\windows\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -11078,7 +11078,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.304\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.302\\RuntimeIdentifierGraph.json"
       }
     }
   }

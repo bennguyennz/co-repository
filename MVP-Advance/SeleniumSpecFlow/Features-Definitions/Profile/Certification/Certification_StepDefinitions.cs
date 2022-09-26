@@ -68,7 +68,7 @@ namespace SeleniumSpecFlow
 
             //Get the test data from the excel file
             GlobalDefinitions.ExcelLib.PopulateInCollection(ExcelPath, "Profile");
-            string testCertificate = GlobalDefinitions.ExcelLib.ReadData(2, "Certificate");
+            string testCertificate = GlobalDefinitions.ExcelLib.ReadData(3, "Certificate");
 
             // Assert the newly added description on profile
             string actualCertificate = certificationObj.GetCertificate();
@@ -81,6 +81,39 @@ namespace SeleniumSpecFlow
 
             // Assertion 2: If the actual message contains test data, test passed, else, test failed
             Assert.That(newMssage == testCertificate + " " + "has been deleted from your certification", "Experted alert message and actual message do not match.");
+        }
+
+        [When(@"I click button Edit '([^']*)'")]
+        public void WhenIClickButtonEdit(string certificate1)
+        {
+            certificationObj.ClickEdit(certificate1);
+        }
+
+        [When(@"I edit a '([^']*)' '([^']*)' '([^']*)'")]
+        public void WhenIEditA(string certificate2, string from, string year)
+        {
+            certificationObj.EditCertificate(certificate2, from, year);
+        }
+
+        [Then(@"The existing certificate is edited as '([^']*)' '([^']*)' '([^']*)'")]
+        public void ThenTheExistingCertificateIsEditedAs(string certificate2, string from, string year)
+        {
+            //Check message
+            string assertMessage = certificate2 + " has been updated to your certification";
+            string message = certificationObj.GetMessage();
+            Assert.That(message == assertMessage, "Actual message and Expected message do not match.");
+
+            //Check certifcate
+            string assertCertificate = certificationObj.GetCertificate(certificate2);
+            Assert.That(assertCertificate == certificate2, "Actual certificate and Expected certificate do not match.");
+
+            //check certification form
+            string editedCertificationFrom = certificationObj.GetCertificationFrom();
+            Assert.That(editedCertificationFrom == from, "Actual certifier and Expected certifier do not match.");
+
+            //check certification year
+            string editedYear = certificationObj.GetCertificationYear();
+            Assert.That(editedYear == year, "Actual certification year and Expected certification year do not match.");
         }
 
 

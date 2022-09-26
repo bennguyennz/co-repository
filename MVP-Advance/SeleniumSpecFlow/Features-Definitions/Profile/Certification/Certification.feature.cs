@@ -140,6 +140,51 @@ this.ScenarioInitialize(scenarioInfo);
             }
             this.ScenarioCleanup();
         }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("5_2 Edit a certification")]
+        [NUnit.Framework.CategoryAttribute("Certifications")]
+        [NUnit.Framework.TestCaseAttribute("IC Expert Test Analyst", "Professional Expert Test Analyst", "Industry Connect", "2022", null)]
+        public void _5_2EditACertification(string certificate1, string certificate2, string from, string year, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "Certifications"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("Certificate1", certificate1);
+            argumentsOfScenario.Add("Certificate2", certificate2);
+            argumentsOfScenario.Add("From", from);
+            argumentsOfScenario.Add("Year", year);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("5_2 Edit a certification", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 21
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 22
+ testRunner.Given("I go to Certifications", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 23
+ testRunner.When(string.Format("I click button Edit \'{0}\'", certificate1), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 24
+ testRunner.And(string.Format("I edit a \'{0}\' \'{1}\' \'{2}\'", certificate2, from, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 25
+ testRunner.Then(string.Format("The existing certificate is edited as \'{0}\' \'{1}\' \'{2}\'", certificate2, from, year), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
     }
 }
 #pragma warning restore
