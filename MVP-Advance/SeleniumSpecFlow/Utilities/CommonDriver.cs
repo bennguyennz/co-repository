@@ -10,17 +10,18 @@ using System.Text;
 using System.Threading.Tasks;
 using TechTalk.SpecFlow;
 using static SeleniumSpecFlow.Utilities.GlobalDefinitions;
-using static SeleniumSpecFlow.Utilities.WaitHelpers;
 
-[assembly: Parallelizable(ParallelScope.Fixtures)]
-[assembly: LevelOfParallelism(2)]
+
+
+//[assembly: Parallelizable(ParallelScope.Fixtures)]
+//[assembly: LevelOfParallelism(2)]
 
 namespace SeleniumSpecFlow.Utilities
 {
     [Binding]
     public class CommonDriver
     {
-        [ThreadStatic]
+        //[ThreadStatic]
         public static IWebDriver driver;
         Login loginObj;
 
@@ -43,7 +44,7 @@ namespace SeleniumSpecFlow.Utilities
                         driver.Manage().Window.Maximize();
                         break;
                 }
-                wait(3);
+
 
                 //Load Excel
                 ExcelLib.PopulateInCollection(ExcelPath, "SignIn");
@@ -54,10 +55,11 @@ namespace SeleniumSpecFlow.Utilities
                 //Signin
                 loginObj = new Login();
                 loginObj.LogInSteps();
+
             }
             catch (TimeoutException e)
             {
-                wait(5);
+
                 Assert.Ignore(e.Message);
             }
         }
@@ -65,6 +67,7 @@ namespace SeleniumSpecFlow.Utilities
         [AfterScenario]
         public void TearDown()
         {
+
             driver.Close();
         }
 

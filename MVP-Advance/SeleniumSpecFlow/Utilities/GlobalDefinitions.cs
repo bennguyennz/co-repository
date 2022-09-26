@@ -13,8 +13,10 @@ namespace SeleniumSpecFlow.Utilities
     {
         #region Constant configuration
         public static int Browser = 2;
-        public static string excelPath = @"D:\workspace\mvpstudio-advance\specflow\MVP-Advance\SeleniumSpecFlow\TestLibrary\TestData\TestData.xlsx";
-        public static string ReportsPath = @"D:\workspace\mvpstudio-advance\specflow\MVP-Advance\SeleniumSpecFlow\TestLibrary\TestReports\";
+        public static string excelPath = System.IO.Directory.GetParent(@"../../../").FullName
+           + Path.DirectorySeparatorChar + "TestLibrary/TestData/TestData.xlsx";
+        public static string AutoScriptPath = System.IO.Directory.GetParent(@"../../../").FullName
+           + Path.DirectorySeparatorChar + "TestLibrary/TestData/UploadScript.exe";
         #endregion
 
         public static string ExcelPath { get => excelPath; set => excelPath = value; }
@@ -80,7 +82,6 @@ namespace SeleniumSpecFlow.Utilities
                                    select colData.colValue).SingleOrDefault();
 
                     //var datas = dataCol.Where(x => x.colName == columnName && x.rowNumber == rowNumber).SingleOrDefault().colValue;
-
 
                     return data.ToString();
                 }
