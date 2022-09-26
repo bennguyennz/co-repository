@@ -145,7 +145,7 @@ namespace SeleniumSpecFlow.Pages.ProfilePages
 
                 //Get the test data from the excel file
                 GlobalDefinitions.ExcelLib.PopulateInCollection(ExcelPath, "Profile");
-                string testCertificate = GlobalDefinitions.ExcelLib.ReadData(2, "Certificate");
+                string testCertificate = GlobalDefinitions.ExcelLib.ReadData(3, "Certificate");
 
                 //Get the actual certificate 
                 string actualCertificate = GetCertificate();
@@ -165,6 +165,84 @@ namespace SeleniumSpecFlow.Pages.ProfilePages
             {
                 Assert.Fail("No certificate is found.", ex.Message);
             }
+        }
+        #endregion
+
+        #region Edit certificate
+        public void ClickEdit(string certifcate1)
+        {
+
+            string e_Edit = "//div[@data-tab='fourth']//tbody[" + GetCertificateIndex(certifcate1) + "]/tr/td[4]/span[1]";
+            IWebElement btnEdit = driver.FindElement(By.XPath(e_Edit));
+            btnEdit.Click();
+
+        }
+        public string GetCertificate(string certificate)
+        {
+            string findCertificate = "null";
+            int titleCount = certificates.Count();
+            if (titleCount.Equals(0))
+                return "No certificate is found";
+            else
+            {
+                for (int i = 0; i < titleCount; i++)
+                {
+                    if (certificates[i].Text.Equals(certificate))
+                    {
+                        findCertificate = certificates[i].Text;
+                        break;
+                    }
+                }
+                if (findCertificate.Equals("null"))
+                {
+                    return "Certificate not found";
+                }
+            }
+            return findCertificate;
+        }
+
+        public int GetCertificateIndex(string certificate)
+        {
+            int index = 0;
+            int titleCount = certificates.Count();
+            if (titleCount.Equals(0))
+                Assert.Ignore("There is no certificate record.");
+            else
+            {
+                for (int i = 0; i < titleCount; i++)
+                {
+                    if (certificates[i].Text.Equals(certificate))
+                    {
+                        index = i + 1;
+                        break;
+                    }
+                }
+                if (index.Equals(0))
+                {
+                    Assert.Ignore("Certificate " + certificate + "is not found.");
+                }
+            }
+            return index;
+        }
+
+        public void EditCertificate(string certificate2, string from, string year)
+        {
+            //Edit Certificate/Award
+            editedCertificate.Clear();
+            editedCertificate.SendKeys(certificate2);
+
+            //Edit Certifier
+            editedCertificationFrom.Clear();
+            editedCertificationFrom.SendKeys(from);
+
+            //Edit year
+            var editedYear = new SelectElement(dropdownYear);
+            editedYear.SelectByValue(year);
+
+            //Click on Update
+            WaitHelpers.WaitToBeClickable(driver, "XPath", e_buttonCompleteUpdate, 5);
+            buttonCompleteUpdate.Click();
+
         }
         #endregion
     }
