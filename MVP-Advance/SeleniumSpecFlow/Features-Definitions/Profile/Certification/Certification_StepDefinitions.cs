@@ -73,7 +73,7 @@ namespace SeleniumSpecFlow
             // Assert the newly added description on profile
             string actualCertificate = certificationObj.GetCertificate();
 
-            // Assertion 1: Compare actual data with test data, if matched, test passed, else, test failed
+            // Assertion 1: Compare actual data with test data, if NOT matched, test passed, else, test failed
             Assert.That(actualCertificate != testCertificate, "Actual data and test data are not matched");
 
             //Get the message from the pop-up alert message
